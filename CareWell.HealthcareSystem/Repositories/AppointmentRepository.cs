@@ -17,6 +17,11 @@ public class AppointmentRepository : IAppointmentRepository
         return Task.FromResult(_appointments.FirstOrDefault(a => a.Id == id));
     }
 
+    public Task<IEnumerable<Appointment>> GetAllAsync()
+    {
+        return Task.FromResult<IEnumerable<Appointment>>(_appointments.ToList());
+    }
+
     public Task<bool> IsSlotAvailable(DateTime date, string doctor)
     {
         var exists = _appointments.Any(a =>

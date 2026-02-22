@@ -14,15 +14,19 @@ public class Appointment
     public Guid Id { get; private set; }
     public Guid PatientId { get; private set; }
     public DateTime AppointmentDate { get; private set; }
-    public string DoctorName { get; private set; }
-    public AppointmentStatus Status { get; private set; }
+    public string DoctorName { get; private set; } = string.Empty;
+    public AppointmentStatus Status { get; private set; } = AppointmentStatus.Scheduled;
 
-    public Appointment(Guid patientId, DateTime date, string doctor)
+    // Navigation property
+    public Patient? Patient { get; private set; }
+
+    public Appointment() { }
+
+    public Appointment(Guid patientId, DateTime appointmentDate, string doctorName)
     {
-        Id = Guid.NewGuid();
         PatientId = patientId;
-        AppointmentDate = date;
-        DoctorName = doctor;
+        AppointmentDate = appointmentDate;
+        DoctorName = doctorName;
         Status = AppointmentStatus.Scheduled;
     }
 

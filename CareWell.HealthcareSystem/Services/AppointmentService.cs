@@ -75,4 +75,9 @@ public class AppointmentService : IAppointmentService
         appointment.UpdateStatus(newStatus);
         await _appointmentRepository.UpdateAsync(appointment);
     }
+
+    public Task<IEnumerable<Appointment>> GetAllAsync()
+    {
+        return _appointmentRepository.GetAllAsync();
+    }
 }

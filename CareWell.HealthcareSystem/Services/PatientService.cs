@@ -19,4 +19,24 @@ public class PatientService : IPatientService
         await _patientRepository.AddAsync(patient);
         return patient;
     }
+
+        public Task<IEnumerable<Patient>> GetAllAsync()
+        {
+            return _patientRepository.GetAllAsync();
+        }
+
+        public Task<Patient?> GetByIdAsync(Guid id)
+        {
+            return _patientRepository.GetByIdAsync(id);
+        }
+
+        public Task UpdateAsync(Patient patient)
+        {
+            return _patientRepository.UpdateAsync(patient);
+        }
+
+        public Task DeleteAsync(Guid id)
+        {
+            return _patientRepository.DeleteAsync(id);
+        }
 }
